@@ -1,0 +1,543 @@
+@page "/account/update-avatar"
+@model UpdateAvatarModel
+
+@{
+    ViewData["Title"] = "Update Avatar";
+}
+
+<div class="avatar-page">
+
+    <!-- =========================
+         SIDEBAR
+    ========================== -->
+    <aside class="sidebar">
+
+        <div class="sidebar-brand">
+            <div class="brand-logo">
+                SL
+            </div>
+
+            <div class="brand-text">
+                <strong>Smart Library</strong>
+                <span>Management System</span>
+            </div>
+        </div>
+
+        <nav class="sidebar-nav">
+
+            <a asp-page="/Index" class="sidebar-link">
+                <span class="icon">⌂</span>
+                <span>Home</span>
+            </a>
+
+            <a asp-page="/Privacy" class="sidebar-link">
+                <span class="icon">🔒</span>
+                <span>Privacy</span>
+            </a>
+
+            <a asp-page="/Account/Profile" class="sidebar-link active">
+                <span class="icon">👤</span>
+                <span>My Profile</span>
+            </a>
+
+            @if (User.IsInRole("Admin"))
+            {
+                <a asp-page="/Dashboard" class="sidebar-link">
+                    <span class="icon">▦</span>
+                    <span>Admin Dashboard</span>
+                </a>
+
+                <a asp-page="/Manage/Users/Index" class="sidebar-link">
+                    <span class="icon">👥</span>
+                    <span>Manage Users</span>
+                </a>
+            }
+
+        </nav>
+
+        <div class="sidebar-bottom">
+            <div class="sidebar-info">
+                <div class="info-dot"></div>
+
+                <div>
+                    <strong>System Online</strong>
+                    <span>Smart Library</span>
+                </div>
+            </div>
+        </div>
+
+    </aside>
+
+
+    <!-- =========================
+         MAIN CONTENT
+    ========================== -->
+    <main class="main-content">
+
+        <!-- TOP BAR -->
+        <div class="top-bar">
+
+            <div>
+                <span class="system-label">
+                    SMART LIBRARY MANAGEMENT SYSTEM
+                </span>
+
+                <h1>Update Avatar</h1>
+            </div>
+
+            <div class="user-area">
+
+                <div class="user-avatar">
+                    @(User.Identity?.Name?.Substring(0, 1).ToUpper() ?? "U")
+                </div>
+
+                <div class="user-details">
+
+                    <strong>
+                        @User.Identity?.Name
+                    </strong>
+
+                    <span>
+                        @(User.IsInRole("Admin")
+                            ? "Administrator"
+                            : "Library User")
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- =========================
+             AVATAR CONTENT
+        ========================== -->
+        <div class="avatar-layout">
+
+
+            <!-- =========================
+                 LEFT CARD
+            ========================== -->
+            <section class="upload-card">
+
+                <div class="card-heading">
+
+                    <span class="section-label">
+                        PROFILE PHOTO
+                    </span>
+
+                    <h2>Update Your Avatar</h2>
+
+                    <p>
+                        Upload a clear photo of yourself to use
+                        as your Smart Library profile picture.
+                    </p>
+
+                </div>
+
+
+                <!-- VALIDATION -->
+                <div asp-validation-summary="All"
+                     class="validation-summary">
+                </div>
+
+
+                <!-- CURRENT AVATAR -->
+                <div class="avatar-preview">
+
+                    <div class="avatar-ring">
+
+                        <img src="@Model.Input.ProfileImage"
+                             alt="Current profile image"
+                             id="avatarPreview"
+                             class="current-avatar" />
+
+                    </div>
+
+                    <div class="avatar-status">
+                        <span class="status-dot"></span>
+                        Current Profile Picture
+                    </div>
+
+                </div>
+
+
+                <!-- ACCOUNT INFORMATION -->
+                <div class="account-info">
+
+                    <span class="section-label">
+                        ACCOUNT
+                    </span>
+
+                    <div class="account-row">
+
+                        <span class="account-label">
+                            Username
+                        </span>
+
+                        <span class="account-value">
+                            @Model.Input.Username
+                        </span>
+
+                    </div>
+
+                    <div class="account-row">
+
+                        <span class="account-label">
+                            First Name
+                        </span>
+
+                        <span class="account-value">
+                            @Model.Input.FirstName
+                        </span>
+
+                    </div>
+
+                    <div class="account-row">
+
+                        <span class="account-label">
+                            Last Name
+                        </span>
+
+                        <span class="account-value">
+                            @Model.Input.LastName
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =========================
+                     UPLOAD FORM
+                ========================== -->
+                <form method="post"
+                      enctype="multipart/form-data"
+                      class="avatar-form">
+
+
+                    <div class="upload-area">
+
+                        <div class="upload-icon">
+                            📷
+                        </div>
+
+                        <div class="upload-text">
+
+                            <h3>
+                                Choose a profile photo
+                            </h3>
+
+                            <p>
+                                Select a clear face photo from your device.
+                            </p>
+
+                        </div>
+
+
+                        <!-- FILE INPUT -->
+                        <div class="avatar-upload-section">
+
+                            <label asp-for="Input.AvatarImage"
+                                   class="avatar-upload-label">
+                                Avatar Image
+                            </label>
+
+                            <input asp-for="Input.AvatarImage"
+                                   id="avatarInput"
+                                   type="file"
+                                   accept="image/jpeg,image/png,image/webp"
+                                   class="form-control avatar-file-input" />
+
+                            <div class="file-info">
+                                JPG, PNG or WEBP • Face photo only
+                            </div>
+
+                            <span asp-validation-for="Input.AvatarImage"
+                                  class="text-danger avatar-validation">
+                            </span>
+
+                        </div>
+
+
+                        <!-- SELECTED FILE -->
+                        <div id="selectedFile"
+                             class="selected-file">
+
+                            <span class="file-check">
+                                ✓
+                            </span>
+
+                            <span id="fileName">
+                                No file selected
+                            </span>
+
+                        </div>
+
+
+                        <!-- =========================
+                             ONLY ONE BUTTON SET
+                        ========================== -->
+                        <div class="form-actions">
+
+                            <button type="submit"
+                                    class="upload-button">
+
+                                <span>
+                                    ↑
+                                </span>
+
+                                Upload Avatar
+
+                            </button>
+
+                            <a asp-page="/Account/Profile"
+                               class="cancel-button">
+
+                                Cancel
+
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </form>
+
+            </section>
+
+
+            <!-- =========================
+                 RIGHT: PHOTO RULES
+            ========================== -->
+            <aside class="rules-card">
+
+                <div class="rules-header">
+
+                    <div class="restricted-icon">
+                        🚫
+                    </div>
+
+                    <div>
+
+                        <span class="section-label">
+                            IMPORTANT
+                        </span>
+
+                        <h2>
+                            Photo Restrictions
+                        </h2>
+
+                    </div>
+
+                </div>
+
+
+                <p class="rules-intro">
+                    Your profile picture must clearly represent
+                    you. Please follow these photo requirements.
+                </p>
+
+
+                <!-- ACCEPTED -->
+                <div class="rule-box accepted">
+
+                    <div class="rule-box-title">
+
+                        <div class="rule-symbol">
+                            ✓
+                        </div>
+
+                        <strong>
+                            Accepted Photo
+                        </strong>
+
+                    </div>
+
+                    <div class="rule">
+                        <span>✓</span>
+                        <p>Clear photo of your face</p>
+                    </div>
+
+                    <div class="rule">
+                        <span>✓</span>
+                        <p>One person only</p>
+                    </div>
+
+                    <div class="rule">
+                        <span>✓</span>
+                        <p>Face clearly visible</p>
+                    </div>
+
+                    <div class="rule">
+                        <span>✓</span>
+                        <p>Good lighting</p>
+                    </div>
+
+                    <div class="rule">
+                        <span>✓</span>
+                        <p>Recent personal photo</p>
+                    </div>
+
+                </div>
+
+
+                <!-- RESTRICTED -->
+                <div class="rule-box restricted">
+
+                    <div class="rule-box-title">
+
+                        <div class="rule-symbol">
+                            !
+                        </div>
+
+                        <strong>
+                            Restricted Photos
+                        </strong>
+
+                    </div>
+
+                    <div class="rule">
+                        <span>✕</span>
+                        <p>Group photos</p>
+                    </div>
+
+                    <div class="rule">
+                        <span>✕</span>
+                        <p>Full-body photos</p>
+                    </div>
+
+                    <div class="rule">
+                        <span>✕</span>
+                        <p>Logos or company images</p>
+                    </div>
+
+                    <div class="rule">
+                        <span>✕</span>
+                        <p>Cartoon or anime images</p>
+                    </div>
+
+                    <div class="rule">
+                        <span>✕</span>
+                        <p>Pictures with hidden faces</p>
+                    </div>
+
+                    <div class="rule">
+                        <span>✕</span>
+                        <p>Random objects or scenery</p>
+                    </div>
+
+                </div>
+
+
+                <!-- SECURITY NOTICE -->
+                <div class="security-notice">
+
+                    <div class="security-icon">
+                        🔐
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            Profile Photo Security
+                        </strong>
+
+                        <p>
+                            Your avatar is associated with your
+                            Smart Library account and should only
+                            represent the account owner.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </aside>
+
+        </div>
+
+
+        <!-- FOOTER -->
+        <footer class="page-footer">
+
+            <div>
+
+                <strong>
+                    Smart Library Management System
+                </strong>
+
+                <span>
+                    Organize. Manage. Discover.
+                </span>
+
+            </div>
+
+            <span>
+                © 2026 Smart Library System
+            </span>
+
+        </footer>
+
+    </main>
+
+</div>
+
+
+@section Scripts {
+
+    <partial name="_ValidationScriptsPartial" />
+
+    <script>
+
+        const avatarInput =
+            document.getElementById("avatarInput");
+
+        const avatarPreview =
+            document.getElementById("avatarPreview");
+
+        const selectedFile =
+            document.getElementById("selectedFile");
+
+        const fileName =
+            document.getElementById("fileName");
+
+
+        if (avatarInput) {
+
+            avatarInput.addEventListener("change", function () {
+
+                if (this.files && this.files.length > 0) {
+
+                    const file = this.files[0];
+
+                    fileName.textContent = file.name;
+
+                    selectedFile.classList.add("show");
+
+
+                    // Preview selected image
+                    if (file.type.startsWith("image/")) {
+
+                        const reader = new FileReader();
+
+                        reader.onload = function (event) {
+
+                            avatarPreview.src =
+                                event.target.result;
+
+                        };
+
+                        reader.readAsDataURL(file);
+
+                    }
+
+                }
+
+            });
+
+        }
+
+    </script>
+}

@@ -1,0 +1,14 @@
+@page 
+@model MyEventsModel
+@{
+    ViewData["Title"] = "My Events";
+}
+<div class="container py-5">
+    <div class="card shadow-sm">
+        <div class="card-body p-5">
+            <h1>My Events</h1>
+            <p class="lead">This page is available to regular users.</p>
+            <p>This page is protected with <code>[Authorize(Roles = "User")]</code>.</p>
+        </div>
+    </div>
+</div>

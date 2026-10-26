@@ -1,0 +1,880 @@
+@page
+@model DashboardModel
+@{
+    ViewData["Title"] = "Admin Dashboard";
+}
+
+<div class="admin-dashboard">
+
+    <!-- =========================
+         LEFT SIDEBAR
+    ========================== -->
+
+    <aside class="dashboard-sidebar">
+
+        <!-- LOGO / BRAND -->
+        <div class="dashboard-brand">
+
+            <div class="brand-icon">
+                SL
+            </div>
+
+            <div class="brand-text">
+                <strong>Smart Library</strong>
+                <small>Admin Panel</small>
+            </div>
+
+        </div>
+
+
+        <!-- NAVIGATION -->
+        <nav class="dashboard-nav">
+
+            <!-- HOME -->
+            <a asp-page="/Index"
+               class="dashboard-nav-link">
+
+                <span class="nav-icon">⌂</span>
+
+                <span>Home</span>
+
+            </a>
+
+
+            <!-- PRIVACY -->
+            <a asp-page="/Privacy"
+               class="dashboard-nav-link">
+
+                <span class="nav-icon">♢</span>
+
+                <span>Privacy</span>
+
+            </a>
+
+
+            <!-- MY PROFILE -->
+            <a asp-page="/Account/Profile"
+               class="dashboard-nav-link">
+
+                <span class="nav-icon">♙</span>
+
+                <span>My Profile</span>
+
+            </a>
+
+
+            <!-- ADMIN DASHBOARD -->
+            <a asp-page="/Dashboard"
+               class="dashboard-nav-link active">
+
+                <span class="nav-icon">▦</span>
+
+                <span>Admin Dashboard</span>
+
+            </a>
+
+
+            <!-- MANAGE USERS -->
+            <a asp-page="/Manage/Users/Index"
+               class="dashboard-nav-link">
+
+                <span class="nav-icon">♟</span>
+
+                <span>Manage Users</span>
+
+            </a>
+
+        </nav>
+
+
+        <!-- DIVIDER -->
+        <div class="sidebar-divider"></div>
+
+
+        <!-- SIDEBAR ACTIONS -->
+        <div class="sidebar-actions">
+
+            <!-- NOTIFICATIONS -->
+            <button type="button"
+                    class="sidebar-action">
+
+                <span class="nav-icon">
+                    🔔
+                </span>
+
+                <span>
+                    Notifications
+                </span>
+
+                <span class="sidebar-badge">
+                    3
+                </span>
+
+            </button>
+
+
+            <!-- SETTINGS -->
+            <a href="#"
+               class="dashboard-nav-link">
+
+                <span class="nav-icon">
+                    ⚙
+                </span>
+
+                <span>
+                    Settings
+                </span>
+
+            </a>
+
+
+            <!-- LOGOUT -->
+            <a href="/Account/Logout"
+               class="dashboard-nav-link logout-link">
+
+                <span class="nav-icon">
+                    ↪
+                </span>
+
+                <span>
+                    Logout
+                </span>
+
+            </a>
+
+        </div>
+
+
+        <!-- ADMIN STATUS -->
+        <div class="sidebar-bottom">
+
+            <div class="sidebar-status-dot">
+            </div>
+
+            <div class="sidebar-admin-info">
+
+                <strong>
+                    Administrator
+                </strong>
+
+                <small>
+                    System Access
+                </small>
+
+            </div>
+
+        </div>
+
+    </aside>
+
+
+    <!-- =========================
+         MAIN CONTENT
+    ========================== -->
+
+    <main class="dashboard-main">
+
+
+        <!-- =========================
+             CONTENT
+        ========================== -->
+
+        <div class="dashboard-content">
+
+
+            <!-- =========================
+                 HERO
+            ========================== -->
+
+            <section class="dashboard-hero">
+
+                <div class="hero-content">
+
+                    <div class="hero-label">
+                        SMART LIBRARY SYSTEM
+                    </div>
+
+
+                    <h1>
+                        Welcome back, Administrator
+                    </h1>
+
+
+                    <p>
+                        Manage library users, accounts,
+                        security and system activities
+                        from your administrator dashboard.
+                    </p>
+
+
+                    <!-- SYSTEM STATUS -->
+
+                    <div class="hero-status">
+
+                        <div class="hero-status-text">
+
+                            <strong>
+                                System Status
+                            </strong>
+
+                            <span>
+                                All services are operational
+                            </span>
+
+                        </div>
+
+
+                        <div class="status-online">
+
+                            <span class="online-dot">
+                                ●
+                            </span>
+
+                            Online
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- HERO GRAPHIC -->
+
+                <div class="hero-graphic">
+
+                    <div class="library-card card-one">
+                        📚
+                    </div>
+
+                    <div class="library-card card-two">
+                        👥
+                    </div>
+
+                    <div class="library-card card-three">
+                        📊
+                    </div>
+
+                    <div class="library-card card-four">
+                        🔐
+                    </div>
+
+
+                    <div class="hero-center-icon">
+                        SL
+                    </div>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- =========================
+                 STATISTICS
+            ========================== -->
+
+            <section class="stats-grid">
+
+
+                <!-- TOTAL USERS -->
+
+                <div class="stat-card">
+
+                    <div class="stat-top">
+
+                        <div class="stat-icon green">
+                            👥
+                        </div>
+
+                        <span class="stat-menu">
+                            ⋮
+                        </span>
+
+                    </div>
+
+
+                    <p>
+                        Total Users
+                    </p>
+
+
+                    <h2>
+                        120
+                    </h2>
+
+
+                    <span class="stat-growth">
+                        +8 this month
+                    </span>
+
+                </div>
+
+
+
+                <!-- TOTAL BOOKS -->
+
+                <div class="stat-card">
+
+                    <div class="stat-top">
+
+                        <div class="stat-icon green">
+                            📚
+                        </div>
+
+                        <span class="stat-menu">
+                            ⋮
+                        </span>
+
+                    </div>
+
+
+                    <p>
+                        Total Books
+                    </p>
+
+
+                    <h2>
+                        842
+                    </h2>
+
+
+                    <span class="stat-growth">
+                        +24 recently added
+                    </span>
+
+                </div>
+
+
+
+                <!-- BORROWED BOOKS -->
+
+                <div class="stat-card">
+
+                    <div class="stat-top">
+
+                        <div class="stat-icon green">
+                            📖
+                        </div>
+
+                        <span class="stat-menu">
+                            ⋮
+                        </span>
+
+                    </div>
+
+
+                    <p>
+                        Borrowed Books
+                    </p>
+
+
+                    <h2>
+                        56
+                    </h2>
+
+
+                    <span class="stat-growth">
+                        Currently borrowed
+                    </span>
+
+                </div>
+
+
+
+                <!-- OVERDUE -->
+
+                <div class="stat-card">
+
+                    <div class="stat-top">
+
+                        <div class="stat-icon warning">
+                            ⚠
+                        </div>
+
+                        <span class="stat-menu">
+                            ⋮
+                        </span>
+
+                    </div>
+
+
+                    <p>
+                        Overdue Books
+                    </p>
+
+
+                    <h2>
+                        7
+                    </h2>
+
+
+                    <span class="stat-danger">
+                        Requires attention
+                    </span>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- =========================
+                 MAIN DASHBOARD GRID
+            ========================== -->
+
+            <section class="dashboard-grid">
+
+
+                <!-- USER MANAGEMENT -->
+
+                <div class="dashboard-panel">
+
+                    <div class="panel-header">
+
+                        <div>
+
+                            <h3>
+                                User Management
+                            </h3>
+
+                            <p>
+                                Manage registered accounts
+                                and permissions.
+                            </p>
+
+                        </div>
+
+
+                        <a asp-page="/Manage/Users/Index"
+                           class="green-button">
+
+                            👥 Manage Users
+
+                        </a>
+
+                    </div>
+
+
+
+                    <div class="user-management-grid">
+
+
+                        <!-- USER ACCOUNTS -->
+
+                        <a asp-page="/Manage/Users/Index"
+                           class="management-card">
+
+                            <div class="management-icon">
+                                👤
+                            </div>
+
+                            <strong>
+                                User Accounts
+                            </strong>
+
+                            <span>
+                                View and manage registered
+                                library accounts.
+                            </span>
+
+                        </a>
+
+
+
+                        <!-- ROLES -->
+
+                        <a href="#"
+                           class="management-card">
+
+                            <div class="management-icon">
+                                🛡
+                            </div>
+
+                            <strong>
+                                User Roles
+                            </strong>
+
+                            <span>
+                                Manage administrator and
+                                user permissions.
+                            </span>
+
+                        </a>
+
+
+
+                        <!-- SECURITY -->
+
+                        <a href="#"
+                           class="management-card">
+
+                            <div class="management-icon">
+                                🔐
+                            </div>
+
+                            <strong>
+                                Security
+                            </strong>
+
+                            <span>
+                                Monitor authentication,
+                                login and access control.
+                            </span>
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- =========================
+                     SECURITY PANEL
+                ========================== -->
+
+                <div class="dashboard-side-column">
+
+
+                    <div class="dashboard-panel system-panel">
+
+                        <div class="panel-header">
+
+                            <div>
+
+                                <h3>
+                                    System Security
+                                </h3>
+
+                            </div>
+
+
+                            <span class="security-status">
+                                Active
+                            </span>
+
+                        </div>
+
+
+                        <div class="security-score">
+
+                            <h2>
+                                98%
+                            </h2>
+
+                            <span>
+                                Protection Level
+                            </span>
+
+                        </div>
+
+
+                        <div class="security-meter">
+
+                            <div class="security-meter-fill">
+                            </div>
+
+                        </div>
+
+
+                        <p class="system-message">
+
+                            Authentication and
+                            role-based authorization
+                            are currently enabled.
+
+                        </p>
+
+                    </div>
+
+
+
+                    <!-- ADMIN PROFILE -->
+
+                    <div class="dashboard-panel">
+
+                        <h3>
+                            Administrator
+                        </h3>
+
+
+                        <div class="administrator-profile">
+
+                            <div class="admin-avatar-large">
+                                AR
+                            </div>
+
+
+                            <div class="administrator-info">
+
+                                <strong>
+                                    Administrator
+                                </strong>
+
+                                <span>
+                                    Admin Role
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- =========================
+                 LOWER SECTION
+            ========================== -->
+
+            <section class="lower-dashboard-grid">
+
+
+                <!-- RECENT ACTIVITY -->
+
+                <div class="dashboard-panel">
+
+                    <div class="panel-header">
+
+                        <div>
+
+                            <h3>
+                                Recent Activity
+                            </h3>
+
+                            <p>
+                                Latest system events.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="activity-list">
+
+
+                        <!-- ACTIVITY 1 -->
+
+                        <div class="activity-item">
+
+                            <div class="activity-icon">
+                                👤
+                            </div>
+
+
+                            <div>
+
+                                <strong>
+                                    User account created
+                                </strong>
+
+                                <span>
+                                    A new library account
+                                    was registered.
+                                </span>
+
+                            </div>
+
+
+                            <small>
+                                5 min ago
+                            </small>
+
+                        </div>
+
+
+
+                        <!-- ACTIVITY 2 -->
+
+                        <div class="activity-item">
+
+                            <div class="activity-icon">
+                                📚
+                            </div>
+
+
+                            <div>
+
+                                <strong>
+                                    Book record updated
+                                </strong>
+
+                                <span>
+                                    Library information
+                                    was updated.
+                                </span>
+
+                            </div>
+
+
+                            <small>
+                                24 min ago
+                            </small>
+
+                        </div>
+
+
+
+                        <!-- ACTIVITY 3 -->
+
+                        <div class="activity-item">
+
+                            <div class="activity-icon">
+                                🔐
+                            </div>
+
+
+                            <div>
+
+                                <strong>
+                                    Administrator login
+                                </strong>
+
+                                <span>
+                                    Successful secure
+                                    administrator login.
+                                </span>
+
+                            </div>
+
+
+                            <small>
+                                Today
+                            </small>
+
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- =========================
+                     QUICK ACTIONS
+                ========================== -->
+
+                <div class="dashboard-panel">
+
+                    <div class="panel-header">
+
+                        <div>
+
+                            <h3>
+                                Quick Actions
+                            </h3>
+
+                            <p>
+                                Common administrator tasks.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="quick-actions">
+
+
+                        <!-- MANAGE USERS -->
+
+                        <a asp-page="/Manage/Users/Index"
+                           class="quick-action-card">
+
+                            <span>
+                                👥
+                            </span>
+
+                            <strong>
+                                Manage Users
+                            </strong>
+
+                            <small>
+                                Manage accounts
+                            </small>
+
+                        </a>
+
+
+
+                        <!-- PROFILE -->
+
+                        <a asp-page="/Account/Profile"
+                           class="quick-action-card">
+
+                            <span>
+                                👤
+                            </span>
+
+                            <strong>
+                                My Profile
+                            </strong>
+
+                            <small>
+                                View your profile
+                            </small>
+
+                        </a>
+
+
+
+                        <!-- SECURITY -->
+
+                        <a href="#"
+                           class="quick-action-card">
+
+                            <span>
+                                🔐
+                            </span>
+
+                            <strong>
+                                Security
+                            </strong>
+
+                            <small>
+                                Account security
+                            </small>
+
+                        </a>
+
+
+
+                        <!-- SETTINGS -->
+
+                        <a href="#"
+                           class="quick-action-card">
+
+                            <span>
+                                ⚙️
+                            </span>
+
+                            <strong>
+                                Settings
+                            </strong>
+
+                            <small>
+                                System settings
+                            </small>
+
+                        </a>
+
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+        </div>
+
+    </main>
+
+</div>

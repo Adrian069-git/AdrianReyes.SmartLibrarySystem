@@ -1,0 +1,841 @@
+﻿@page
+@model PrivacyModel
+
+@{
+    ViewData["Title"] = "Privacy Policy";
+}
+
+<div class="privacy-page">
+
+    <!-- =====================================================
+         LEFT SIDEBAR
+    ====================================================== -->
+
+    <aside class="privacy-sidebar">
+
+        <!-- BRAND -->
+
+        <div class="privacy-brand">
+
+            <div class="privacy-brand-icon">
+                SL
+            </div>
+
+            <div class="privacy-brand-text">
+
+                <strong>
+                    Smart Library
+                </strong>
+
+                <small>
+                    Admin Panel
+                </small>
+
+            </div>
+
+        </div>
+
+
+        <!-- NAVIGATION -->
+
+        <nav class="privacy-nav">
+
+            <a asp-page="/Index"
+               class="privacy-nav-link">
+
+                <span class="privacy-nav-icon">
+                    ⌂
+                </span>
+
+                <span>
+                    Home
+                </span>
+
+            </a>
+
+
+            <a asp-page="/Privacy"
+               class="privacy-nav-link active">
+
+                <span class="privacy-nav-icon">
+                    ♢
+                </span>
+
+                <span>
+                    Privacy
+                </span>
+
+            </a>
+
+
+            <a asp-page="/Account/Profile"
+               class="privacy-nav-link">
+
+                <span class="privacy-nav-icon">
+                    ♙
+                </span>
+
+                <span>
+                    My Profile
+                </span>
+
+            </a>
+
+
+            <a asp-page="/Admin/Dashboard"
+               class="privacy-nav-link">
+
+                <span class="privacy-nav-icon">
+                    ▦
+                </span>
+
+                <span>
+                    Admin Dashboard
+                </span>
+
+            </a>
+
+
+            <a asp-page="/Manage/Users/Index"
+               class="privacy-nav-link">
+
+                <span class="privacy-nav-icon">
+                    ♟
+                </span>
+
+                <span>
+                    Manage Users
+                </span>
+
+            </a>
+
+        </nav>
+
+
+        <!-- DIVIDER -->
+
+        <div class="privacy-sidebar-divider">
+        </div>
+
+
+        <!-- OTHER MENU -->
+
+        <div class="privacy-sidebar-actions">
+
+            <button type="button"
+                    class="privacy-sidebar-action">
+
+                <span class="privacy-nav-icon">
+                    🔔
+                </span>
+
+                <span>
+                    Notifications
+                </span>
+
+                <span class="privacy-notification-badge">
+                    3
+                </span>
+
+            </button>
+
+
+            <a href="#"
+               class="privacy-nav-link">
+
+                <span class="privacy-nav-icon">
+                    ⚙
+                </span>
+
+                <span>
+                    Settings
+                </span>
+
+            </a>
+
+
+            <a href="/Account/Logout"
+               class="privacy-nav-link privacy-logout">
+
+                <span class="privacy-nav-icon">
+                    ↪
+                </span>
+
+                <span>
+                    Logout
+                </span>
+
+            </a>
+
+        </div>
+
+
+        <!-- ADMIN STATUS -->
+
+        <div class="privacy-sidebar-bottom">
+
+            <div class="privacy-online-dot">
+            </div>
+
+            <div class="privacy-admin-status">
+
+                <strong>
+                    Administrator
+                </strong>
+
+                <small>
+                    System Access
+                </small>
+
+            </div>
+
+        </div>
+
+    </aside>
+
+
+
+    <!-- =====================================================
+         MAIN CONTENT
+    ====================================================== -->
+
+    <main class="privacy-main">
+
+        <div class="privacy-content">
+
+
+            <!-- PAGE HEADER -->
+
+            <div class="privacy-page-header">
+
+                <div>
+
+                    <div class="privacy-label">
+                        SMART LIBRARY SYSTEM
+                    </div>
+
+                    <h1>
+                        Privacy Policy
+                    </h1>
+
+                    <p>
+                        Learn how the Smart Library Management System
+                        handles and protects your information.
+                    </p>
+
+                </div>
+
+
+                <a asp-page="/Dashboard"
+                   class="privacy-dashboard-button">
+
+                    ← Dashboard
+
+                </a>
+
+            </div>
+
+
+
+            <!-- PRIVACY INTRO -->
+
+            <section class="privacy-hero">
+
+                <div class="privacy-hero-icon">
+                    🔒
+                </div>
+
+                <div>
+
+                    <h2>
+                        Your Privacy Matters
+                    </h2>
+
+                    <p>
+                        The Smart Library Management System is designed
+                        to protect the personal information of its users
+                        while providing a secure and efficient library
+                        management experience.
+                    </p>
+
+                    <span class="privacy-updated">
+                        Privacy Policy for Smart Library Management System
+                    </span>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- CONTENT GRID -->
+
+            <div class="privacy-grid">
+
+
+                <!-- LEFT CONTENT -->
+
+                <div class="privacy-document">
+
+
+                    <!-- 1 -->
+
+                    <section class="privacy-section">
+
+                        <div class="privacy-section-number">
+                            01
+                        </div>
+
+                        <div>
+
+                            <h2>
+                                Information We Collect
+                            </h2>
+
+                            <p>
+                                The Smart Library Management System may
+                                collect information necessary to create
+                                and manage user accounts and provide
+                                library-related services.
+                            </p>
+
+                            <p>
+                                Information may include:
+                            </p>
+
+                            <ul>
+
+                                <li>
+                                    Username and account information
+                                </li>
+
+                                <li>
+                                    First and last name
+                                </li>
+
+                                <li>
+                                    Date of birth
+                                </li>
+
+                                <li>
+                                    Account status and access level
+                                </li>
+
+                                <li>
+                                    Authentication and security information
+                                </li>
+
+                            </ul>
+
+                        </div>
+
+                    </section>
+
+
+
+                    <!-- 2 -->
+
+                    <section class="privacy-section">
+
+                        <div class="privacy-section-number">
+                            02
+                        </div>
+
+                        <div>
+
+                            <h2>
+                                How We Use Your Information
+                            </h2>
+
+                            <p>
+                                Information collected by the system is
+                                used only for legitimate library and
+                                system-management purposes.
+                            </p>
+
+                            <ul>
+
+                                <li>
+                                    Creating and maintaining user accounts
+                                </li>
+
+                                <li>
+                                    Authenticating users
+                                </li>
+
+                                <li>
+                                    Managing authorized access to the system
+                                </li>
+
+                                <li>
+                                    Maintaining account security
+                                </li>
+
+                                <li>
+                                    Supporting library operations
+                                </li>
+
+                                <li>
+                                    Improving system functionality
+                                </li>
+
+                            </ul>
+
+                        </div>
+
+                    </section>
+
+
+
+                    <!-- 3 -->
+
+                    <section class="privacy-section">
+
+                        <div class="privacy-section-number">
+                            03
+                        </div>
+
+                        <div>
+
+                            <h2>
+                                Password and Account Security
+                            </h2>
+
+                            <p>
+                                User passwords should never be stored
+                                as plain text. Passwords are protected
+                                using secure password-hashing mechanisms
+                                before being stored in the system.
+                            </p>
+
+                            <p>
+                                The system may also monitor unsuccessful
+                                login attempts and temporarily restrict
+                                access when repeated failed attempts are
+                                detected.
+                            </p>
+
+                        </div>
+
+                    </section>
+
+
+
+                    <!-- 4 -->
+
+                    <section class="privacy-section">
+
+                        <div class="privacy-section-number">
+                            04
+                        </div>
+
+                        <div>
+
+                            <h2>
+                                Access to Personal Information
+                            </h2>
+
+                            <p>
+                                Access to user information is restricted
+                                according to the user's assigned role
+                                and permissions.
+                            </p>
+
+                            <p>
+                                Administrators may have additional access
+                                to information required to maintain user
+                                accounts and operate the Smart Library
+                                Management System.
+                            </p>
+
+                        </div>
+
+                    </section>
+
+
+
+                    <!-- 5 -->
+
+                    <section class="privacy-section">
+
+                        <div class="privacy-section-number">
+                            05
+                        </div>
+
+                        <div>
+
+                            <h2>
+                                Data Protection
+                            </h2>
+
+                            <p>
+                                Reasonable technical and organizational
+                                measures are used to protect information
+                                stored within the system against
+                                unauthorized access, alteration,
+                                disclosure, or destruction.
+                            </p>
+
+                            <p>
+                                Users are also responsible for keeping
+                                their login credentials confidential
+                                and should immediately report suspected
+                                unauthorized access.
+                            </p>
+
+                        </div>
+
+                    </section>
+
+
+
+                    <!-- 6 -->
+
+                    <section class="privacy-section">
+
+                        <div class="privacy-section-number">
+                            06
+                        </div>
+
+                        <div>
+
+                            <h2>
+                                Data Retention
+                            </h2>
+
+                            <p>
+                                User information may be retained for as
+                                long as necessary to operate the library
+                                system, maintain account records, comply
+                                with institutional requirements, and
+                                support legitimate administrative
+                                purposes.
+                            </p>
+
+                        </div>
+
+                    </section>
+
+
+
+                    <!-- 7 -->
+
+                    <section class="privacy-section">
+
+                        <div class="privacy-section-number">
+                            07
+                        </div>
+
+                        <div>
+
+                            <h2>
+                                Third-Party Services
+                            </h2>
+
+                            <p>
+                                The Smart Library Management System may
+                                use third-party services or software
+                                components to support functionality such
+                                as email delivery, authentication,
+                                database management, or application
+                                hosting.
+                            </p>
+
+                            <p>
+                                Such services should only receive the
+                                information necessary to perform their
+                                intended function.
+                            </p>
+
+                        </div>
+
+                    </section>
+
+
+
+                    <!-- 8 -->
+
+                    <section class="privacy-section">
+
+                        <div class="privacy-section-number">
+                            08
+                        </div>
+
+                        <div>
+
+                            <h2>
+                                User Responsibilities
+                            </h2>
+
+                            <p>
+                                Users are expected to provide accurate
+                                information and protect their account
+                                credentials.
+                            </p>
+
+                            <ul>
+
+                                <li>
+                                    Do not share your password.
+                                </li>
+
+                                <li>
+                                    Use a strong and unique password.
+                                </li>
+
+                                <li>
+                                    Log out after using shared devices.
+                                </li>
+
+                                <li>
+                                    Report suspicious account activity.
+                                </li>
+
+                            </ul>
+
+                        </div>
+
+                    </section>
+
+
+
+                    <!-- 9 -->
+
+                    <section class="privacy-section">
+
+                        <div class="privacy-section-number">
+                            09
+                        </div>
+
+                        <div>
+
+                            <h2>
+                                Changes to This Privacy Policy
+                            </h2>
+
+                            <p>
+                                This Privacy Policy may be updated when
+                                changes are made to the Smart Library
+                                Management System, its security practices,
+                                or institutional requirements.
+                            </p>
+
+                            <p>
+                                Users are encouraged to review this page
+                                periodically for the latest information.
+                            </p>
+
+                        </div>
+
+                    </section>
+
+
+
+                    <!-- 10 -->
+
+                    <section class="privacy-section last-section">
+
+                        <div class="privacy-section-number">
+                            10
+                        </div>
+
+                        <div>
+
+                            <h2>
+                                Contact and Concerns
+                            </h2>
+
+                            <p>
+                                If you have questions, concerns, or
+                                requests regarding your personal
+                                information or account security, please
+                                contact the library administrator or the
+                                designated system administrator.
+                            </p>
+
+                        </div>
+
+                    </section>
+
+                </div>
+
+
+
+                <!-- RIGHT SIDE -->
+
+                <aside class="privacy-right-column">
+
+
+                    <!-- QUICK SUMMARY -->
+
+                    <section class="privacy-card">
+
+                        <div class="privacy-card-header">
+
+                            <h2>
+                                Privacy at a Glance
+                            </h2>
+
+                            <span>
+                                ✓
+                            </span>
+
+                        </div>
+
+
+                        <div class="privacy-check-item">
+
+                            <div>
+                                ✓
+                            </div>
+
+                            <span>
+                                Account information is protected
+                            </span>
+
+                        </div>
+
+
+                        <div class="privacy-check-item">
+
+                            <div>
+                                ✓
+                            </div>
+
+                            <span>
+                                Passwords are securely hashed
+                            </span>
+
+                        </div>
+
+
+                        <div class="privacy-check-item">
+
+                            <div>
+                                ✓
+                            </div>
+
+                            <span>
+                                Access is role-based
+                            </span>
+
+                        </div>
+
+
+                        <div class="privacy-check-item">
+
+                            <div>
+                                ✓
+                            </div>
+
+                            <span>
+                                Security controls help prevent
+                                unauthorized access
+                            </span>
+
+                        </div>
+
+                    </section>
+
+
+
+                    <!-- DATA PROTECTION -->
+
+                    <section class="privacy-card">
+
+                        <div class="privacy-card-icon">
+                            🛡
+                        </div>
+
+                        <h2>
+                            Data Protection
+                        </h2>
+
+                        <p>
+                            We aim to keep user information secure
+                            and limit access to authorized users.
+                        </p>
+
+                    </section>
+
+
+
+                    <!-- ACCOUNT SECURITY -->
+
+                    <section class="privacy-card">
+
+                        <div class="privacy-card-icon">
+                            🔐
+                        </div>
+
+                        <h2>
+                            Account Security
+                        </h2>
+
+                        <p>
+                            Keep your username and password private.
+                            Never share your login credentials with
+                            other people.
+                        </p>
+
+                        <a asp-page="/Account/Profile"
+                           class="privacy-card-button">
+
+                            My Profile →
+
+                        </a>
+
+                    </section>
+
+
+
+                    <!-- SYSTEM -->
+
+                    <section class="privacy-card privacy-system-card">
+
+                        <div class="privacy-system-logo">
+                            SL
+                        </div>
+
+                        <h2>
+                            Smart Library
+                        </h2>
+
+                        <p>
+                            Smart Library Management System
+                        </p>
+
+                        <span>
+                            Secure • Organized • Efficient
+                        </span>
+
+                    </section>
+
+                </aside>
+
+            </div>
+
+
+
+            <!-- FOOTER NOTICE -->
+
+            <div class="privacy-footer-notice">
+
+                <span>
+                    🔒
+                </span>
+
+                <p>
+                    This privacy policy is intended for the
+                    Smart Library Management System and may be
+                    updated according to the requirements of the
+                    institution operating the system.
+                </p>
+
+            </div>
+
+        </div>
+
+    </main>
+
+</div>

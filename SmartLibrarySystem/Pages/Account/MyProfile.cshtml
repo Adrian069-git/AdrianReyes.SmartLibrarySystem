@@ -1,0 +1,25 @@
+@page "/account/my-profile"
+@model MyProfileModel
+@{
+    ViewData["Title"] = "My Profile";
+}
+<div class="container py-5" style="max-width:700px">
+    <div class="card shadow-sm">
+        <div class="card-body text-center p-5">
+            <h2 class="mb-4">My Profile</h2>
+            @if (!string.IsNullOrWhiteSpace(Model.SuccessMessage)) { <div class="alert alert-success">@Model.SuccessMessage</div> }
+            <img src="@Model.ProfileImage" alt="Profile image" class="rounded-circle mb-4" style="width:160px;height:160px;object-fit:cover;" />
+            <div class="text-start mx-auto" style="max-width:450px">
+                <p><strong>Username:</strong> <span>@Model.Profile!.UserName</span></p>
+                <p><strong>First Name:</strong> <span>@Model.Profile.FirstName</span></p>
+                <p><strong>Last Name:</strong> <span>@Model.Profile.LastName</span></p>
+                <p><strong>Date of Birth:</strong> <span>@Model.Profile.DateOfBirth.ToString("yyyy-MM-dd")</span></p>
+            </div>
+            <div class="mt-4 d-flex gap-2 justify-content-center flex-wrap">
+                <a asp-page="/Account/UpdateProfile" class="btn btn-primary">Update Profile</a>
+                <a asp-page="/Account/UpdateAvatar" class="btn btn-outline-primary">Update Avatar</a>
+                <a asp-page="/Account/ChangePassword" class="btn btn-outline-secondary">Change Password</a>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,31 @@
+@page "/account/invite"
+
+@model Invite
+
+
+<form method="post" class="mt-5">
+  <div class="mb-3">
+    <div asp-validation-summary="All" class="text-danger"></div>
+  </div>    
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">Email address</label>
+    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" asp-for="@Model.UserInviteDto.UserName">
+    <span asp-validation-for="@Model.UserInviteDto.UserName" class="text-danger"></span>
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputFirstName1" class="form-label">First Name</label>
+    <input type="text" class="form-control" id="exampleInputFirstName1" asp-for="@Model.UserInviteDto.FirstName">
+    <span asp-validation-for="@Model.UserInviteDto.FirstName" class="text-danger"></span>
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputLastName1" class="form-label">Last Name</label>
+    <input type="text" class="form-control" id="exampleInputLastName1" asp-for="@Model.UserInviteDto.LastName">
+    <span asp-validation-for="@Model.UserInviteDto.LastName" class="text-danger"></span>
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputDateOfBirth1" class="form-label">Date of Birth</label>
+    <input type="date" class="form-control" id="exampleInputDateOfBirth1" asp-for="@Model.UserInviteDto.DateOfBirth">
+    <span asp-validation-for="@Model.UserInviteDto.DateOfBirth" class="text-danger"></span>
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>

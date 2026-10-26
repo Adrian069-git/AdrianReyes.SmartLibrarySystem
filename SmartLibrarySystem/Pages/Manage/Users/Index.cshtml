@@ -1,0 +1,555 @@
+@page
+@model SmartLibrarySystem.Pages.Manage.Users.IndexModel
+
+@{
+    ViewData["Title"] = "Manage Users";
+}
+
+<div class="users-page">
+
+    <!-- SIDEBAR -->
+    <aside class="users-sidebar">
+
+        <div class="users-brand">
+
+            <div class="users-brand-icon">
+                SL
+            </div>
+
+            <div class="users-brand-text">
+                <strong>Smart Library</strong>
+                <small>Admin Panel</small>
+            </div>
+
+        </div>
+
+
+        <nav class="users-nav">
+
+            <a asp-page="/Index"
+               class="users-nav-link">
+                <span class="users-nav-icon">⌂</span>
+                <span>Home</span>
+            </a>
+
+            <a asp-page="/Privacy"
+               class="users-nav-link">
+                <span class="users-nav-icon">♢</span>
+                <span>Privacy</span>
+            </a>
+
+            <a asp-page="/Account/Profile"
+               class="users-nav-link">
+                <span class="users-nav-icon">♙</span>
+                <span>My Profile</span>
+            </a>
+
+            <a asp-page="/Admin/Dashboard"
+               class="users-nav-link">
+                <span class="users-nav-icon">▦</span>
+                <span>Admin Dashboard</span>
+            </a>
+
+            <a asp-page="/Manage/Users/Index"
+               class="users-nav-link active">
+                <span class="users-nav-icon">♟</span>
+                <span>Manage Users</span>
+            </a>
+
+        </nav>
+
+
+        <div class="users-sidebar-divider"></div>
+
+
+        <div class="users-sidebar-actions">
+
+            <button type="button"
+                    class="users-sidebar-action">
+
+                <span class="users-nav-icon">🔔</span>
+
+                <span>Notifications</span>
+
+                <span class="users-notification-badge">
+                    3
+                </span>
+
+            </button>
+
+
+            <a href="#"
+               class="users-nav-link">
+
+                <span class="users-nav-icon">⚙</span>
+                <span>Settings</span>
+
+            </a>
+
+
+            <a href="#"
+               class="users-nav-link users-logout">
+
+                <span class="users-nav-icon">↪</span>
+                <span>Logout</span>
+
+            </a>
+
+        </div>
+
+
+        <div class="users-sidebar-bottom">
+
+            <div class="users-online-dot"></div>
+
+            <div>
+                <strong>Administrator</strong>
+                <small>System Access</small>
+            </div>
+
+        </div>
+
+    </aside>
+
+
+    <!-- MAIN -->
+    <main class="users-main">
+
+        <div class="users-content">
+
+
+            <!-- PAGE HEADER -->
+            <div class="users-page-header">
+
+                <div>
+
+                    <div class="users-label">
+                        SMART LIBRARY SYSTEM
+                    </div>
+
+                    <h1>
+                        Manage Users
+                    </h1>
+
+                    <p>
+                        Search, sort and manage registered user accounts.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- SUMMARY -->
+            <section class="users-summary-grid">
+
+                <div class="users-summary-card">
+
+                    <div class="summary-icon">
+                        👥
+                    </div>
+
+                    <div>
+                        <span>Total Records</span>
+                        <strong>@Model.TotalRecords</strong>
+                    </div>
+
+                </div>
+
+
+                <div class="users-summary-card">
+
+                    <div class="summary-icon">
+                        📄
+                    </div>
+
+                    <div>
+                        <span>Current Page</span>
+                        <strong>
+                            @(Model.TotalPages == 0 ? 0 : Model.PageIndex)
+                            / @Model.TotalPages
+                        </strong>
+                    </div>
+
+                </div>
+
+
+                <div class="users-summary-card">
+
+                    <div class="summary-icon">
+                        ↕
+                    </div>
+
+                    <div>
+                        <span>Sort Order</span>
+                        <strong>
+                            @(Model.SortOrder == "asc" ? "A - Z" : "Z - A")
+                        </strong>
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- SEARCH PANEL -->
+            <section class="users-panel">
+
+                <div class="users-panel-header">
+
+                    <div>
+                        <h2>Search & Filter</h2>
+                        <p>Find users and customize the records shown.</p>
+                    </div>
+
+                </div>
+
+
+                <form method="get"
+                      class="users-filter-form">
+
+                    <input type="hidden"
+                           name="sortBy"
+                           value="username" />
+
+
+                    <!-- SEARCH -->
+                    <div class="users-form-group users-search-group">
+
+                        <label for="keyword">
+                            Search by Username
+                        </label>
+
+                        <div class="users-input-wrapper">
+
+                            <span>
+                                ⌕
+                            </span>
+
+                            <input id="keyword"
+                                   name="keyword"
+                                   value="@Model.Keyword"
+                                   placeholder="Search username..."
+                                   class="users-input" />
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- SORT -->
+                    <div class="users-form-group">
+
+                        <label for="sortOrder">
+                            Sort Username
+                        </label>
+
+                        <select id="sortOrder"
+                                name="sortOrder"
+                                class="users-select">
+
+                            @if (Model.SortOrder == "asc")
+                            {
+                                <option value="asc" selected>
+                                    Ascending (A-Z)
+                                </option>
+
+                                <option value="desc">
+                                    Descending (Z-A)
+                                </option>
+                            }
+                            else
+                            {
+                                <option value="asc">
+                                    Ascending (A-Z)
+                                </option>
+
+                                <option value="desc" selected>
+                                    Descending (Z-A)
+                                </option>
+                            }
+
+                        </select>
+
+                    </div>
+
+
+                    <!-- PAGE SIZE -->
+                    <div class="users-form-group">
+
+                        <label for="pageSize">
+                            Page Size
+                        </label>
+
+                        <select id="pageSize"
+                                name="pageSize"
+                                class="users-select">
+
+                            @foreach (var size in new[] { 5, 10, 20, 50 })
+                            {
+                                @if (Model.PageSize == size)
+                                {
+                                    <option value="@size"
+                                            selected>
+                                        @size
+                                    </option>
+                                }
+                                else
+                                {
+                                    <option value="@size">
+                                        @size
+                                    </option>
+                                }
+                            }
+
+                        </select>
+
+                    </div>
+
+
+                    <!-- BUTTONS -->
+                    <div class="users-form-actions">
+
+                        <button type="submit"
+                                class="users-primary-button">
+
+                            🔍 Search / Sort
+
+                        </button>
+
+
+                        <a asp-page="/Manage/Users/Index"
+                           class="users-secondary-button">
+
+                            Reset
+
+                        </a>
+
+                    </div>
+
+                </form>
+
+            </section>
+
+
+            <!-- USERS TABLE -->
+            <section class="users-panel">
+
+                <div class="users-panel-header">
+
+                    <div>
+
+                        <h2>
+                            Registered Users
+                        </h2>
+
+                        <p>
+                            User account records in the Smart Library System.
+                        </p>
+
+                    </div>
+
+
+                    <span class="users-record-count">
+                        @Model.TotalRecords record(s)
+                    </span>
+
+                </div>
+
+
+                @if (Model.Users.Count == 0)
+                {
+                    <div class="users-empty-state">
+
+                        <div class="users-empty-icon">
+                            👤
+                        </div>
+
+                        <h3>No users found</h3>
+
+                        <p>
+                            Try changing your search keyword
+                            or filter settings.
+                        </p>
+
+                        <a asp-page="/Manage/Users/Index"
+                           class="users-primary-button">
+
+                            Clear Filters
+
+                        </a>
+
+                    </div>
+                }
+                else
+                {
+                    <div class="users-table-wrapper">
+
+                        <table class="users-table">
+
+                            <thead>
+
+                                <tr>
+
+                                    <th>
+                                        User
+                                    </th>
+
+                                    <th>
+                                        Username
+                                    </th>
+
+                                    <th>
+                                        First Name
+                                    </th>
+
+                                    <th>
+                                        Last Name
+                                    </th>
+
+                                    <th>
+                                        Date of Birth
+                                    </th>
+
+                                </tr>
+
+                            </thead>
+
+
+                            <tbody>
+
+                                @foreach (var user in Model.Users)
+                                {
+                                    <tr>
+
+                                        <td>
+
+                                            <div class="table-user-avatar">
+
+                                                @{
+                                                    var firstInitial =
+                                                        !string.IsNullOrWhiteSpace(user.FirstName)
+                                                        ? user.FirstName.Substring(0, 1).ToUpper()
+                                                        : "";
+
+                                                    var lastInitial =
+                                                        !string.IsNullOrWhiteSpace(user.LastName)
+                                                        ? user.LastName.Substring(0, 1).ToUpper()
+                                                        : "";
+                                                }
+
+                                                @firstInitial@lastInitial
+
+                                            </div>
+
+                                        </td>
+
+
+                                        <td>
+
+                                            <div class="table-username">
+
+                                                <strong>
+                                                    @user.UserName
+                                                </strong>
+
+                                                <span>
+                                                    Registered User
+                                                </span>
+
+                                            </div>
+
+                                        </td>
+
+
+                                        <td>
+                                            @user.FirstName
+                                        </td>
+
+
+                                        <td>
+                                            @user.LastName
+                                        </td>
+
+
+                                        <td>
+                                            @user.DateOfBirth.ToString("yyyy-MM-dd")
+                                        </td>
+
+                                    </tr>
+                                }
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+                }
+
+
+                <!-- PAGINATION -->
+                <div class="users-pagination">
+
+                    <a class="
+                        users-page-button
+                        @((Model.PageIndex <= 1 || Model.TotalPages == 0)
+                            ? "disabled"
+                            : "")"
+                       asp-page="/Manage/Users/Index"
+                       asp-route-pageIndex="@(Model.PageIndex - 1)"
+                       asp-route-pageSize="@Model.PageSize"
+                       asp-route-sortBy="@Model.SortBy"
+                       asp-route-sortOrder="@Model.SortOrder"
+                       asp-route-keyword="@Model.Keyword">
+
+                        ← Previous
+
+                    </a>
+
+
+                    <div class="users-page-current">
+
+                        Page
+
+                        <strong>
+                            @(Model.TotalPages == 0
+                                ? 0
+                                : Model.PageIndex)
+                        </strong>
+
+                        of
+
+                        <strong>
+                            @Model.TotalPages
+                        </strong>
+
+                    </div>
+
+
+                    <a class="
+                        users-page-button
+                        @((Model.TotalPages == 0 ||
+                           Model.PageIndex >= Model.TotalPages)
+                            ? "disabled"
+                            : "")"
+                       asp-page="/Manage/Users/Index"
+                       asp-route-pageIndex="@(Model.PageIndex + 1)"
+                       asp-route-pageSize="@Model.PageSize"
+                       asp-route-sortBy="@Model.SortBy"
+                       asp-route-sortOrder="@Model.SortOrder"
+                       asp-route-keyword="@Model.Keyword">
+
+                        Next →
+
+                    </a>
+
+                </div>
+
+            </section>
+
+
+        </div>
+
+    </main>
+
+</div>

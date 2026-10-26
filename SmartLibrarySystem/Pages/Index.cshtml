@@ -1,0 +1,419 @@
+﻿@page
+@using Microsoft.AspNetCore.Authorization
+@model IndexModel
+
+@{
+    ViewData["Title"] = "Home";
+}
+
+<div class="home-page">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+        <div class="sidebar-brand">
+            <div class="brand-logo">SL</div>
+
+            <div class="brand-text">
+                <strong>Smart Library</strong>
+                <span>Management System</span>
+            </div>
+        </div>
+
+        <nav class="sidebar-nav">
+
+            <a asp-page="/Index" class="sidebar-link active">
+                <span class="icon">⌂</span>
+                <span>Home</span>
+            </a>
+
+            <a asp-page="/Privacy" class="sidebar-link">
+                <span class="icon">🔒</span>
+                <span>Privacy</span>
+            </a>
+
+            @if (User.Identity?.IsAuthenticated == true)
+            {
+                <a asp-page="/Account/Profile" class="sidebar-link">
+                    <span class="icon">👤</span>
+                    <span>My Profile</span>
+                </a>
+            }
+
+            @if (User.IsInRole("Admin"))
+            {
+                <a asp-page="/Admin/Dashboard" class="sidebar-link">
+                    <span class="icon">▦</span>
+                    <span>Admin Dashboard</span>
+                </a>
+
+                <a asp-page="/Manage/Users/Index" class="sidebar-link">
+                    <span class="icon">👥</span>
+                    <span>Manage Users</span>
+                </a>
+            }
+
+        </nav>
+
+        <a href="/Account/Logout"
+               class="privacy-nav-link privacy-logout">
+
+                <span class="privacy-nav-icon">
+                    ↪
+                </span>
+
+                <span>
+                    Logout
+                </span>
+
+            </a>
+
+        <div class="sidebar-bottom">
+
+            <div class="sidebar-info">
+                <div class="info-dot"></div>
+                <div>
+                    <strong>System Online</strong>
+                    <span>Smart Library</span>
+                </div>
+            </div>
+
+        </div>
+
+    </aside>
+
+
+    <!-- MAIN CONTENT -->
+    <main class="main-content">
+
+        <!-- TOP BAR -->
+        <div class="top-bar">
+
+            <div>
+                <span class="system-label">SMART LIBRARY MANAGEMENT SYSTEM</span>
+                <h1>Home</h1>
+            </div>
+
+            <div class="user-area">
+
+                @if (User.Identity?.IsAuthenticated == true)
+                {
+                    <div class="user-avatar">
+                        @(User.Identity.Name?.Substring(0, 1).ToUpper() ?? "U")
+                    </div>
+
+                    <div class="user-details">
+                        <strong>@User.Identity.Name</strong>
+                        <span>
+                            @(User.IsInRole("Admin") ? "Administrator" : "Library User")
+                        </span>
+                    </div>
+                }
+                else
+                {
+                    <div class="user-avatar">G</div>
+
+                    <div class="user-details">
+                        <strong>Guest User</strong>
+                        <span>Not logged in</span>
+                    </div>
+                }
+
+            </div>
+
+        </div>
+
+
+        <!-- WELCOME CARD -->
+        <section class="welcome-card">
+
+            <div class="welcome-content">
+
+                @if (User.Identity?.IsAuthenticated == true)
+                {
+                    <span class="welcome-badge">WELCOME BACK</span>
+
+                    <h2>
+                        Welcome,
+                        <span>@User.Identity.Name</span>!
+                    </h2>
+
+                    <p>
+                        Welcome to the Smart Library Management System.
+                        Manage your library activities, access your account,
+                        and keep your library information organized.
+                    </p>
+
+                    <div class="login-status">
+
+                        <span class="status-indicator"></span>
+
+                        <span>
+                            Login Time:
+                            <strong>
+                                @(HttpContext.Session.GetString("UserLoginTime") ?? "Not available")
+                            </strong>
+                        </span>
+
+                    </div>
+                }
+                else
+                {
+                    <span class="welcome-badge">SMART LIBRARY</span>
+
+                    <h2>
+                        Welcome to the
+                        <span>Smart Library</span>
+                    </h2>
+
+                    <p>
+                        A modern library management system designed to make
+                        managing users, books, transactions, and library
+                        information easier and more organized.
+                    </p>
+
+                    <div class="guest-status">
+                        You are currently browsing as a guest.
+                    </div>
+                }
+
+            </div>
+
+            <div class="welcome-illustration">
+
+                <div class="book-stack">
+
+                    <div class="book book-one">
+                        <span>SMART</span>
+                    </div>
+
+                    <div class="book book-two">
+                        <span>LIBRARY</span>
+                    </div>
+
+                    <div class="book book-three">
+                        <span>2026</span>
+                    </div>
+
+                </div>
+
+                <div class="plant">
+                    🌿
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- SYSTEM OVERVIEW -->
+        <section class="section-block">
+
+            <div class="section-heading">
+                <div>
+                    <span class="section-label">SYSTEM OVERVIEW</span>
+                    <h2>Library at a Glance</h2>
+                </div>
+
+                <p>
+                    Everything you need to manage your library system.
+                </p>
+            </div>
+
+
+            <div class="stats-grid">
+
+                <div class="stat-card">
+
+                    <div class="stat-icon">
+                        📚
+                    </div>
+
+                    <div>
+                        <span class="stat-label">BOOKS</span>
+                        <strong>Library Collection</strong>
+                        <p>Manage and organize available books.</p>
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon">
+                        👥
+                    </div>
+
+                    <div>
+                        <span class="stat-label">USERS</span>
+                        <strong>Library Members</strong>
+                        <p>Manage registered library users.</p>
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon">
+                        🔄
+                    </div>
+
+                    <div>
+                        <span class="stat-label">TRANSACTIONS</span>
+                        <strong>Library Activities</strong>
+                        <p>Track borrowing and returning activities.</p>
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon">
+                        🔐
+                    </div>
+
+                    <div>
+                        <span class="stat-label">SECURITY</span>
+                        <strong>Protected Accounts</strong>
+                        <p>Secure authentication and user access.</p>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- FEATURES -->
+        <section class="section-block">
+
+            <div class="section-heading">
+
+                <div>
+                    <span class="section-label">FEATURES</span>
+                    <h2>What You Can Do</h2>
+                </div>
+
+            </div>
+
+
+            <div class="feature-grid">
+
+                <div class="feature-card">
+
+                    <div class="feature-number">01</div>
+
+                    <div class="feature-icon">📖</div>
+
+                    <h3>Manage Books</h3>
+
+                    <p>
+                        Organize the library collection and maintain
+                        important book information in one place.
+                    </p>
+
+                </div>
+
+
+                <div class="feature-card">
+
+                    <div class="feature-number">02</div>
+
+                    <div class="feature-icon">👤</div>
+
+                    <h3>User Management</h3>
+
+                    <p>
+                        Create, manage, and maintain library user accounts
+                        with secure authentication.
+                    </p>
+
+                </div>
+
+
+                <div class="feature-card">
+
+                    <div class="feature-number">03</div>
+
+                    <div class="feature-icon">🔄</div>
+
+                    <h3>Track Transactions</h3>
+
+                    <p>
+                        Keep track of library borrowing and returning
+                        activities.
+                    </p>
+
+                </div>
+
+
+                <div class="feature-card">
+
+                    <div class="feature-number">04</div>
+
+                    <div class="feature-icon">📊</div>
+
+                    <h3>Reports & Records</h3>
+
+                    <p>
+                        Keep library information organized for easier
+                        monitoring and administration.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ABOUT SYSTEM -->
+        <section class="about-card">
+
+            <div class="about-icon">
+                SL
+            </div>
+
+            <div class="about-content">
+
+                <span class="section-label">ABOUT THE SYSTEM</span>
+
+                <h2>Smart Library Management System</h2>
+
+                <p>
+                    The Smart Library Management System is designed to
+                    provide a centralized platform for managing library
+                    resources and user accounts.
+                </p>
+
+                <p>
+                    The system focuses on organization, security, and
+                    accessibility, allowing administrators and authorized
+                    users to efficiently manage library information.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- FOOTER -->
+        <footer class="page-footer">
+
+            <div>
+                <strong>Smart Library Management System</strong>
+                <span>Organize. Manage. Discover.</span>
+            </div>
+
+            <div>
+                <span>© 2026 Smart Library System</span>
+            </div>
+
+        </footer>
+
+    </main>
+
+</div>

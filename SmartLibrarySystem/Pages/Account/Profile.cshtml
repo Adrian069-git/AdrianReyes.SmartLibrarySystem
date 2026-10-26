@@ -1,0 +1,690 @@
+@page "/account/profile"
+@model ProfileModel
+
+@{
+    ViewData["Title"] = "My Profile";
+}
+
+<div class="profile-page">
+
+
+    <!-- =====================================================
+         LEFT SIDEBAR
+    ====================================================== -->
+
+    <aside class="profile-sidebar">
+
+
+        <!-- BRAND -->
+
+        <div class="profile-brand">
+
+            <div class="profile-brand-icon">
+                SL
+            </div>
+
+            <div class="profile-brand-text">
+
+                <strong>
+                    Smart Library
+                </strong>
+
+                <small>
+                    Admin Panel
+                </small>
+
+            </div>
+
+        </div>
+
+
+        <!-- NAVIGATION -->
+
+        <nav class="profile-nav">
+
+
+            <!-- HOME -->
+
+            <a asp-page="/Index"
+               class="profile-nav-link">
+
+                <span class="profile-nav-icon">
+                    ⌂
+                </span>
+
+                <span>
+                    Home
+                </span>
+
+            </a>
+
+
+            <!-- PRIVACY -->
+
+            <a asp-page="/Privacy"
+               class="profile-nav-link">
+
+                <span class="profile-nav-icon">
+                    ♢
+                </span>
+
+                <span>
+                    Privacy
+                </span>
+
+            </a>
+
+
+            <!-- MY PROFILE -->
+
+            <a asp-page="/Account/Profile"
+               class="profile-nav-link active">
+
+                <span class="profile-nav-icon">
+                    ♙
+                </span>
+
+                <span>
+                    My Profile
+                </span>
+
+            </a>
+
+
+            <!-- ADMIN DASHBOARD -->
+
+            <a asp-page="/Admin/Dashboard"
+               class="profile-nav-link">
+
+                <span class="profile-nav-icon">
+                    ▦
+                </span>
+
+                <span>
+                    Admin Dashboard
+                </span>
+
+            </a>
+
+
+            <!-- MANAGE USERS -->
+
+            <a asp-page="/Manage/Users/Index"
+               class="profile-nav-link">
+
+                <span class="profile-nav-icon">
+                    ♟
+                </span>
+
+                <span>
+                    Manage Users
+                </span>
+
+            </a>
+
+        </nav>
+
+
+        <!-- DIVIDER -->
+
+        <div class="profile-sidebar-divider">
+        </div>
+
+
+        <!-- SIDEBAR ACTIONS -->
+
+        <div class="profile-sidebar-actions">
+
+
+            <!-- NOTIFICATIONS -->
+
+            <button type="button"
+                    class="profile-sidebar-action">
+
+                <span class="profile-nav-icon">
+                    🔔
+                </span>
+
+                <span>
+                    Notifications
+                </span>
+
+                <span class="profile-notification-badge">
+                    3
+                </span>
+
+            </button>
+
+
+            <!-- SETTINGS -->
+
+            <a href="#"
+               class="profile-nav-link">
+
+                <span class="profile-nav-icon">
+                    ⚙
+                </span>
+
+                <span>
+                    Settings
+                </span>
+
+            </a>
+
+
+            <!-- LOGOUT -->
+
+            <a href="/Account/Logout"
+               class="profile-nav-link profile-logout">
+
+                <span class="profile-nav-icon">
+                    ↪
+                </span>
+
+                <span>
+                    Logout
+                </span>
+
+            </a>
+
+        </div>
+
+
+        <!-- ADMIN STATUS -->
+
+        <div class="profile-sidebar-bottom">
+
+            <div class="profile-online-dot">
+            </div>
+
+            <div class="profile-admin-status">
+
+                <strong>
+                    Administrator
+                </strong>
+
+                <small>
+                    System Access
+                </small>
+
+            </div>
+
+        </div>
+
+    </aside>
+
+
+
+    <!-- =====================================================
+         MAIN CONTENT
+    ====================================================== -->
+
+    <main class="profile-main">
+
+
+        <div class="profile-content">
+
+
+            <!-- =================================================
+                 PAGE HEADER
+            ================================================== -->
+
+            <div class="profile-page-header">
+
+                <div>
+
+                    <div class="profile-label">
+                        SMART LIBRARY SYSTEM
+                    </div>
+
+                    <h1>
+                        My Profile
+                    </h1>
+
+                    <p>
+                        View and manage your personal
+                        account information.
+                    </p>
+
+                </div>
+
+
+                <a asp-page="/Admin/Dashboard"
+                   class="back-dashboard-button">
+
+                    ← Dashboard
+
+                </a>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 SUCCESS MESSAGE
+            ================================================== -->
+
+            @if (!string.IsNullOrWhiteSpace(Model.SuccessMessage))
+            {
+                <div class="profile-success">
+
+                    <span class="success-icon">
+                        ✓
+                    </span>
+
+                    <div>
+
+                        <strong>
+                            Success
+                        </strong>
+
+                        <p>
+                            @Model.SuccessMessage
+                        </p>
+
+                    </div>
+
+                </div>
+            }
+
+
+
+            <!-- =================================================
+                 PROFILE GRID
+            ================================================== -->
+
+            <div class="profile-grid">
+
+
+                <!-- =============================================
+                     PROFILE CARD
+                ============================================== -->
+
+                <section class="profile-card">
+
+
+                    <!-- PROFILE HEADER -->
+
+                    <div class="profile-card-header">
+
+                        <div>
+
+                            <h2>
+                                Profile Information
+                            </h2>
+
+                            <p>
+                                Your registered account details.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- PROFILE AVATAR -->
+
+                    <div class="profile-avatar-section">
+
+                        <div class="profile-avatar-wrapper">
+
+                            <img src="@Model.ProfileImage"
+                                 alt="Profile image"
+                                 class="profile-avatar" />
+
+                            <div class="avatar-online-indicator">
+                            </div>
+
+                        </div>
+
+
+                        <div class="profile-user-summary">
+
+                            <h3>
+                                @Model.Profile!.FirstName
+                                @Model.Profile.LastName
+                            </h3>
+
+                            <span>
+                                Administrator
+                            </span>
+
+                            <small>
+                                Smart Library System
+                            </small>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- PROFILE DETAILS -->
+
+                    <div class="profile-details">
+
+
+                        <!-- USERNAME -->
+
+                        <div class="profile-detail">
+
+                            <div class="detail-icon">
+                                👤
+                            </div>
+
+                            <div class="detail-content">
+
+                                <label>
+                                    Username
+                                </label>
+
+                                <span>
+                                    @Model.Profile.UserName
+                                </span>
+
+                            </div>
+
+                        </div>
+
+
+
+                        <!-- FIRST NAME -->
+
+                        <div class="profile-detail">
+
+                            <div class="detail-icon">
+                                🪪
+                            </div>
+
+                            <div class="detail-content">
+
+                                <label>
+                                    First Name
+                                </label>
+
+                                <span>
+                                    @Model.Profile.FirstName
+                                </span>
+
+                            </div>
+
+                        </div>
+
+
+
+                        <!-- LAST NAME -->
+
+                        <div class="profile-detail">
+
+                            <div class="detail-icon">
+                                🪪
+                            </div>
+
+                            <div class="detail-content">
+
+                                <label>
+                                    Last Name
+                                </label>
+
+                                <span>
+                                    @Model.Profile.LastName
+                                </span>
+
+                            </div>
+
+                        </div>
+
+
+
+                        <!-- DATE OF BIRTH -->
+
+                        <div class="profile-detail">
+
+                            <div class="detail-icon">
+                                📅
+                            </div>
+
+                            <div class="detail-content">
+
+                                <label>
+                                    Date of Birth
+                                </label>
+
+                                <span>
+                                    @Model.Profile.DateOfBirth.ToString("yyyy-MM-dd")
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- PROFILE ACTIONS -->
+
+                    <div class="profile-actions">
+
+
+                        <a asp-page="/Account/UpdateProfile"
+                           class="profile-primary-button">
+
+                            ✎
+                            <span>
+                                Update Profile
+                            </span>
+
+                        </a>
+
+
+                        <a asp-page="/Account/UpdateAvatar"
+                           class="profile-secondary-button">
+
+                            📷
+                            <span>
+                                Update Avatar
+                            </span>
+
+                        </a>
+
+
+                        <a asp-page="/Account/ChangePassword"
+                           class="profile-secondary-button">
+
+                            🔐
+                            <span>
+                                Change Password
+                            </span>
+
+                        </a>
+
+                    </div>
+
+                </section>
+
+
+
+                <!-- =============================================
+                     RIGHT SIDE
+                ============================================== -->
+
+                <div class="profile-right-column">
+
+
+                    <!-- ACCOUNT STATUS -->
+
+                    <section class="profile-card status-card">
+
+                        <div class="profile-card-header">
+
+                            <div>
+
+                                <h2>
+                                    Account Status
+                                </h2>
+
+                                <p>
+                                    Current account information.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="account-status">
+
+                            <div class="status-circle">
+                                ✓
+                            </div>
+
+                            <div>
+
+                                <strong>
+                                    Active
+                                </strong>
+
+                                <span>
+                                    Your account is currently active.
+                                </span>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="status-line">
+
+                            <span>
+                                Account Type
+                            </span>
+
+                            <strong>
+                                Administrator
+                            </strong>
+
+                        </div>
+
+
+                        <div class="status-line">
+
+                            <span>
+                                Access Level
+                            </span>
+
+                            <strong>
+                                Full Access
+                            </strong>
+
+                        </div>
+
+
+                        <div class="status-line">
+
+                            <span>
+                                Security
+                            </span>
+
+                            <strong class="security-text">
+                                Protected
+                            </strong>
+
+                        </div>
+
+                    </section>
+
+
+
+                    <!-- SECURITY -->
+
+                    <section class="profile-card security-card">
+
+                        <div class="profile-card-header">
+
+                            <div>
+
+                                <h2>
+                                    Account Security
+                                </h2>
+
+                                <p>
+                                    Keep your account protected.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="security-item">
+
+                            <div class="security-item-icon">
+                                🔐
+                            </div>
+
+                            <div>
+
+                                <strong>
+                                    Password
+                                </strong>
+
+                                <span>
+                                    Keep your password secure.
+                                </span>
+
+                            </div>
+
+                        </div>
+
+
+                        <a asp-page="/Account/ChangePassword"
+                           class="security-button">
+
+                            Change Password
+                            <span>
+                                →
+                            </span>
+
+                        </a>
+
+                    </section>
+
+
+
+                    <!-- QUICK ACTION -->
+
+                    <section class="profile-card quick-profile-card">
+
+                        <div class="quick-profile-icon">
+                            SL
+                        </div>
+
+                        <h3>
+                            Smart Library
+                        </h3>
+
+                        <p>
+                            Manage your account and
+                            library system securely.
+                        </p>
+
+                        <a asp-page="/Admin/Dashboard"
+                           class="quick-dashboard-button">
+
+                            Go to Admin Dashboard
+
+                        </a>
+
+                    </section>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </main>
+
+</div>
